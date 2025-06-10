@@ -1,66 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Planned Maintenance System (PMS)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-10.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4?style=for-the-badge&logo=php)](https://php.net)
+[![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql)](https://www.mysql.com/)
+[![Tailwind CSS](https://img.shields.io/badge/CSS-TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
-## About Laravel
+Sistem Informasi Manajemen Pemeliharaan Terencana (Planned Maintenance System) adalah aplikasi web berbasis Laravel yang dirancang untuk membantu memonitor dan mengelola running hours sparepart untuk tujuan pelacakan pemeliharaan. Sistem ini menyediakan fitur inventarisasi sparepart, pencatatan running hours, pengelolaan permintaan sparepart, dan laporan aktivitas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* **Dashboard Interaktif**: Ringkasan visual inventaris, running hours, permintaan sparepart, dan laporan aktivitas. Termasuk pop-up peringatan dini untuk sparepart dengan status `Warning` atau `Danger`.
+* **Manajemen Inventaris**:
+    * Melihat daftar sparepart berdasarkan kategori (Auxiliary Engine, Main Engine, Pump Engine).
+    * Menambah sparepart baru ke inventaris (khusus Admin).
+* **Manajemen Running Hours**:
+    * Mencatat dan memantau jam terpakai sparepart sejak tanggal pemasangan.
+    * Status sparepart (`Safe`, `Warning`, `Danger`) dihitung secara dinamis berdasarkan sisa jam pakai.
+    * Kategorisasi jenis maintenance (`Harian`, `Mingguan`, `Bulanan`, `Tahunan`) berdasarkan `Max Running Hour`.
+    * Fitur penggantian sparepart untuk item yang kritis (khusus Admin).
+* **Manajemen Permintaan Sparepart**:
+    * Membuat permintaan sparepart baru.
+    * Melihat daftar permintaan sparepart.
+    * Admin dapat `Approve` atau `Reject` permintaan.
+* **Laporan Aktivitas**:
+    * Melihat log semua aktivitas penting dalam sistem.
+    * Mengunduh laporan aktivitas dalam format CSV.
+* **Otorisasi Berbasis Peran**: Membatasi akses fitur-fitur penting (misalnya, menambah inventaris, approve/reject permintaan, penggantian sparepart) hanya untuk pengguna dengan peran `Admin`.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Teknologi
 
-## Learning Laravel
+* **Backend**: Laravel (PHP)
+* **Database**: MySQL
+* **Frontend**: Blade Templates, Tailwind CSS, JavaScript (Vanilla JS)
+* **Development Environment**: XAMPP / Laragon (Apache, MySQL)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalasi
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Ikuti langkah-langkah di bawah ini untuk mengatur dan menjalankan proyek di lingkungan lokal Anda.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prasyarat
 
-## Laravel Sponsors
+* PHP >= 8.1
+* Composer
+* MySQL Database
+* Node.js & npm (untuk kompilasi aset frontend)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Langkah-langkah
 
-### Premium Partners
+1.  **Clone repositori:**
+    ```bash
+    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    cd your-repo-name
+    ```
+    *(Ganti `your-username` dan `your-repo-name` dengan detail repositori Anda)*
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2.  **Instal dependensi Composer:**
+    ```bash
+    composer install
+    ```
 
-## Contributing
+3.  **Buat file `.env`:**
+    Salin file `.env.example` menjadi `.env`.
+    ```bash
+    cp .env.example .env
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4.  **Konfigurasi `.env`:**
+    Buka file `.env` dan konfigurasikan detail database Anda:
+    ```env
+    APP_NAME="Planned Maintenance System"
+    APP_ENV=local
+    APP_KEY=
+    APP_DEBUG=true
+    APP_URL=http://localhost:8000
 
-## Code of Conduct
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=maintenance_db # Sesuaikan dengan nama database Anda
+    DB_USERNAME=root         # Sesuaikan
+    DB_PASSWORD=             # Sesuaikan
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    APP_TIMEZONE=Asia/Jakarta # Penting untuk konsistensi waktu WIB
+    ```
+    * Generate `APP_KEY` jika belum ada: `php artisan key:generate`
 
-## Security Vulnerabilities
+5.  **Jalankan Migrasi Database dan Seeder (Opsional, untuk data awal):**
+    ```bash
+    php artisan migrate
+    # Jika Anda memiliki seeder untuk data dummy (misalnya untuk users, spareparts)
+    # php artisan db:seed
+    # Atau seed spesifik: php artisan db:seed --class=UserSeeder
+    ```
+    * **Penting**: Pastikan Anda telah menjalankan semua migrasi yang diperlukan, termasuk yang menambahkan kolom `role` ke tabel `users`, `status` dan `quantity` ke `sparepart_requests`, `max_running_hour` dan `status` ke `running_hours`, serta `timestamps` ke tabel `sparepart_ae/me/pe` dan `reports`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6.  **Instal dependensi NPM dan Kompilasi Aset Frontend:**
+    ```bash
+    npm install
+    npm run dev # Untuk development
+    # npm run build # Untuk production
+    ```
 
-## License
+7.  **Jalankan Server Pengembangan Laravel:**
+    ```bash
+    php artisan serve
+    ```
+    Aplikasi akan tersedia di `http://localhost:8000`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Penggunaan
+
+* **Akses aplikasi:** Buka `http://localhost:8000` di browser Anda.
+* **Login:** Gunakan kredensial pengguna yang ada di database Anda. Untuk mengakses fitur Admin, pastikan akun Anda memiliki `role` `admin` di tabel `users`.
+* **Navigasi:** Gunakan menu navigasi untuk menjelajahi Dashboard, Inventaris, Daftar Permintaan, Running Hours, dan Laporan.
+
+## Kontribusi
+
+Kontribusi dipersilakan! Jika Anda menemukan bug atau memiliki saran fitur, silakan buka *issue* atau buat *pull request*.
+
+## Lisensi
+
+[Opsional: Tambahkan informasi lisensi di sini, misalnya MIT License]
+
+---
